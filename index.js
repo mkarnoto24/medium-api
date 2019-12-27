@@ -70,6 +70,9 @@ app.group("/api/v1", (router) => {
     //ROUTER USER
     router.post('/user', UsersController.add)
 
+    //ROUTER FOR REGISTER
+    router.post('/register', AuthController.register)
+
 
 })
 app.get("/", (req, res) => {

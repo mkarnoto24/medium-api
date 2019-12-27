@@ -38,8 +38,8 @@ app.group("/api/v1", (router) => {
     router.get('/categories', CategoryController.index) //get all
     router.get('/category/:name', CategoryController.show) // get by name
 
-    router.post('/category', authenticated, CategoryController.store) // add category
-    router.patch('/category/:id', authenticated, CategoryController.update) //update category
+    router.post('/category', CategoryController.store) // add category
+    router.patch('/category/:id', CategoryController.update) //update category
     router.delete('/category/:id', authenticated, CategoryController.delete) //delete category
 
     //ARTICLE ROUTER
@@ -63,6 +63,8 @@ app.group("/api/v1", (router) => {
     //ROUTER ARTICLE BY USER
     router.get('/user/:id/articles', authenticated, UsersController.showArticleByUser)
     router.delete('/user/:id/articles', authenticated, UsersController.delete)
+
+    router.post('/article/user', ArticleController.addByUser)
 
 
 })

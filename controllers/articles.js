@@ -77,7 +77,7 @@ exports.showByArticleId = (req, res) => {
 
 
 }
-exports.store = (req, res) => {
+exports.addByUser = (req, res) => {
     Article.create(req.body).then(article => {
         res.send({
             message: "success",
@@ -124,15 +124,18 @@ exports.showByUserId = (req, res) => {
         ], where: { user_id: req.params.id }
     }).then(articles => res.send(articles)).catch(err => res.send(err))
 }
-// exports.store = (req, res) => {
-//     Article.create(req.body).then(article => {
-//         res.send({
-//             message: "success",
-//             article
-//         })
-//     }).catch(err => res.send(err))
+exports.store = (req, res) => {
+    Article.create(
+        req.body,
+        { where: { author_id: req.param.id } }
+    ).then(article => {
+        res.send({
+            message: "success",
+            article
+        })
+    }).catch(err => res.send(err))
 
-// }
+}
 // exports.update = (req, res) => {
 //     Article.update(
 //         req.body,

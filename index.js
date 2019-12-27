@@ -5,7 +5,7 @@ const bodyParser = require('body-parser')
 require('express-group-routes')
 
 const app = express()
-const port = 4000
+const port = process.env.PORT || 4000
 
 //allow this app to receive incoming json request
 app.use(bodyParser.json())
@@ -66,5 +66,7 @@ app.group("/api/v1", (router) => {
 
 
 })
-
+app.get("/", (req, res) => {
+    res.send("Hello World");
+});
 app.listen(port, () => console.log(`Listening on port ${port}!`))

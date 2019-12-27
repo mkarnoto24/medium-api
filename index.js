@@ -23,6 +23,7 @@ const { authenticated } = require('./middleware')
 const AuthController = require('./controllers/auth')
 const CategoryController = require('./controllers/categories')
 const ArticleController = require('./controllers/articles')
+const ArticleByUserController = require('./controllers/articles')
 const CommentController = require('./controllers/comment')
 const FollowController = require('./controllers/follow')
 const UsersController = require('./controllers/users')
@@ -63,8 +64,7 @@ app.group("/api/v1", (router) => {
     //ROUTER ARTICLE BY USER
     router.get('/user/:id/articles', authenticated, UsersController.showArticleByUser)
     router.delete('/user/:id/articles', authenticated, UsersController.delete)
-
-    router.post('/article/user', ArticleController.addByUser)
+    router.post('/article/user', ArticleByUserController.add)
 
 
     //ROUTER USER

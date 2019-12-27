@@ -67,6 +67,10 @@ app.group("/api/v1", (router) => {
     router.post('/article/user', ArticleController.addByUser)
 
 
+    //ROUTER USER
+    router.post('/user', UsersController.add)
+
+
 })
 app.get("/", (req, res) => {
     res.send("Hello World");

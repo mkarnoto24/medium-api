@@ -3,6 +3,15 @@ const Article = require('../models').articles //import articles models
 const User = require('../models').users //import users models 
 //const Comment = require('../models').comment //import users models
 //article by user(person)
+exports.add = (req, res) => {
+    User.create(req.body)
+        .then(user => {
+            res.send({
+                message: "Success",
+                user
+            })
+        }).catch(err => res.send(err))
+}
 exports.showArticleByUser = (req, res) => {
     Article.findAll({
         include: [
@@ -16,7 +25,7 @@ exports.showArticleByUser = (req, res) => {
             }
         ], where: { author_id: req.params.id }
     }).then(articles => res.send(articles))
-    .catch(err => res.send(err))
+        .catch(err => res.send(err))
 }
 
 //untuk update berdasarkan user id yang login
